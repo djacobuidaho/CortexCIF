@@ -11,7 +11,7 @@
       "service":""
     },
     "description": "Submit a hash, IP, or domain to a CIF server",
-    "dataTypeList": ["ip", "domain", "fqdn", "hash"],
+    "dataTypeList": ["thehive:case_artifact"],
     "command": "CIFSubmit/cifsubmit.py",
     "configurationItems": [
     {
@@ -20,7 +20,7 @@
       "type": "number",
       "multi": false,
       "required": true,
-      "defaultValue": 8.5
+      "defaultValue": 85
     },
     {
       "name": "remotes",

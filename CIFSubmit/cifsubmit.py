@@ -83,7 +83,7 @@ class CIFSubmit(Responder):
             data = {
                 'indicator': indicator,
                 'tlp': 'amber',
-                'confidence': self.confidence,
+                'confidence': (self.confidence/10),
                 'tags': self.tags
             }
             results += cli.indicators_create(data=data)
@@ -96,14 +96,15 @@ class CIFSubmit(Responder):
         '''
         Responder.run(self)
 
-        if self.data_type in ['ip', 'domain', 'fqdn', 'hash']:
+        if self.data_type in ['ip', 'domain', 'fqdn', 'hash', 'mail']:
             try:
                 # Just get some json, hopefully the observable
                 cif = self.submit_cif(self.get_data())
 
                 # This gets put back to the summary report object
                 self.report({
-                    'CIF': cif
+                    'CIF': cif,
+                    'test': self.get_data()
                 })
 
             except ValueError as e:
