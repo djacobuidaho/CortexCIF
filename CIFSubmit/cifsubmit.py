@@ -110,7 +110,7 @@ class CIFSubmit(Responder):
             except ValueError as e:
                 self.report(e)
         else:
-            self.report('Unsupported')
+            self.report({'status': 'Unsupported', 'detail': self.data_type})
 
 
 if __name__ == '__main__':
