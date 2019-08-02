@@ -100,7 +100,7 @@ class CIFSubmit(Responder):
         if data['dataType'] in ['ip', 'domain', 'fqdn', 'hash', 'mail']:
             try:
                 # Just get some json, hopefully the observable
-                cif = self.submit_cif(data)
+                cif = self.submit_cif(data['data'])
 
                 # This gets put back to the summary report object
                 self.report({
