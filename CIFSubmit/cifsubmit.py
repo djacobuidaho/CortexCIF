@@ -96,21 +96,22 @@ class CIFSubmit(Responder):
         '''
         Responder.run(self)
 
-        if self.data_type in ['ip', 'domain', 'fqdn', 'hash', 'mail']:
+        data = self.get_data()
+        if data['dataType'] in ['ip', 'domain', 'fqdn', 'hash', 'mail']:
             try:
                 # Just get some json, hopefully the observable
-                cif = self.submit_cif(self.get_data())
+                cif = self.submit_cif(data)
 
                 # This gets put back to the summary report object
                 self.report({
                     'CIF': cif,
-                    'test': self.get_data()
+                    'test': data
                 })
 
             except ValueError as e:
                 self.error(e)
         else:
-            self.error({'status': 'Unsupported', 'detail': self.data_type, 'data': self.get_data()})
+            self.error({'status': 'Unsupported', 'detail': self.data_type, 'data': data})
 
 
 if __name__ == '__main__':
