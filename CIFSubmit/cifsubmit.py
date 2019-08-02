@@ -108,9 +108,9 @@ class CIFSubmit(Responder):
                 })
 
             except ValueError as e:
-                self.unexpectedError(e)
+                self.report(e)
         else:
-            self.notSupported()
+            self.report('Unsupported')
 
 
 if __name__ == '__main__':
