@@ -105,13 +105,13 @@ class CIFSubmit(Responder):
                 # This gets put back to the summary report object
                 self.report({
                     'CIF': cif,
-                    'test': data
+                    'test': data['data']
                 })
 
             except ValueError as e:
                 self.error(e)
         else:
-            self.error({'status': 'Unsupported', 'detail': self.data_type, 'data': data})
+            self.error({'status': 'Unsupported', 'detail': data['dataType'], 'data': data['data']})
 
 
 if __name__ == '__main__':
