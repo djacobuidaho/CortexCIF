@@ -1,0 +1,55 @@
+{
+    "name": "CIFSubmit",
+    "version": "1.0",
+    "author": "Dylan Jacob",
+    "url": "https://github.com/djacobuidaho",
+    "license": "AGPL-V3",
+    "baseConfig": "CIFSubmit",
+    "config": {
+      "check_tlp": false,
+      "max_tlp":3,
+      "service":""
+    },
+    "description": "Submit a hash, IP, or domain to a CIF server",
+    "dataTypeList": ["ip", "domain", "fqdn", "hash"],
+    "command": "CIFSubmit/cifsubmit.py",
+    "configurationItems": [
+    {
+      "name": "confidence",
+      "description": "Default confidence 0-9.9",
+      "type": "number",
+      "multi": false,
+      "required": true,
+      "defaultValue": 8.5
+    },
+    {
+      "name": "remotes",
+      "description": "Define the remote CIF url (including https://, etc.)",
+      "type": "string",
+      "multi": true,
+      "required": true
+    },
+    {
+      "name": "tokens",
+      "description": "CIF API token",
+      "type": "string",
+      "multi": true,
+      "required": true
+    },
+    {
+      "name": "verify",
+      "description": "Verify TLS certificate when connecting to CIF",
+      "type": "boolean",
+      "multi": false,
+      "required": true,
+      "defaultValue": false
+    },
+    {
+      "name": "tags",
+      "description": "Define the default tags for indicators",
+      "type": "string",
+      "multi": true,
+      "required": true
+    }
+    ]
+}
