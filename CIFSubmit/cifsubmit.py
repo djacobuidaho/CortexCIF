@@ -14,23 +14,23 @@ class CIFSubmit(Responder):
         # Bootstrap our ancestor
         Responder.__init__(self)
         # Pull the API token from the application.conf config section
-        self.tokens = self.getParam('config.tokens',
+        self.tokens = self.get_param('config.tokens',
                                     None,
                                     'API key is missing')
         # Pull the remote CIF URL from the application.conf config section
-        self.remotes = self.getParam('config.remotes',
+        self.remotes = self.get_param('config.remotes',
                                      None,
                                      'Remote CIF host is missing')
         # Pull the default tags from the application.conf config section
-        self.tags = self.getParam('config.tags',
+        self.tags = self.get_param('config.tags',
                                      None,
                                      'Tags are missing')
         # Set the confidence from the application.conf config section
-        self.confidence = self.getParam('config.confidence',
+        self.confidence = self.get_param('config.confidence',
                                    None,
                                    'Confidence parameter missing')
         # Set whether to verify TLS from the application.conf config section
-        self.verify = self.getParam('config.verify',
+        self.verify = self.get_param('config.verify',
                                     None,
                                     'Verify parameter missing')
         # Run through the CIF URLs and tokens and pair them into one list
